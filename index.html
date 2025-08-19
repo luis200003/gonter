@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Deluxe | Experiencia Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Variables y estilos base */
+        :root {
+            --cafe-oscuro: #3E2723;
+            --cafe-medio: #5D4037;
+            --cafe-claro: #8D6E63;
+            --beige: #EFEBE9;
+            --dorado: #D4AF37;
+            --texto-oscuro: #2E1E1A;
+            --texto-claro: #5D4037;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--texto-claro);
+            background-color: #f8f5f2;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            color: var(--texto-oscuro);
+            font-weight: 700;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            color: var(--dorado);
+            font-size: 2.8rem;
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--cafe-oscuro);
+            letter-spacing: 1px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--texto-claro);
+            font-weight: 500;
+            font-size: 1.15rem;
+            position: relative;
+            padding-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--dorado);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--dorado);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 0;
+            background: linear-gradient(rgba(62, 39, 35, 0.4), rgba(62, 39, 35, 0.4)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px;
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 50px;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 45px;
+            background-color: var(--dorado);
+            color: var(--cafe-oscuro);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--dorado);
+            font-size: 1.2rem;
+            margin: 0 10px;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--dorado);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--cafe-oscuro);
+        }
+        
+        /* Secciones */
+        section {
+            padding: 120px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        
+        .section-title h2 {
+            font-size: 3.2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background-color: var(--dorado);
+        }
+        
+        .section-title p {
+            max-width: 800px;
+            margin: 25px auto 0;
+            font-size: 1.2rem;
+            color: var(--texto-claro);
+        }
+        
+        /* Sobre Nosotros */
+        .about {
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            height: 550px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--cafe-oscuro);
+        }
+        
+        .about-text p {
+            margin-bottom: 25px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            background-color: var(--beige);
+            padding: 35px;
+            border-left: 5px solid var(--dorado);
+            margin: 35px 0;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            position: relative;
+        }
+        
+        .highlight::before {
+            content: '\201C';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--dorado);
+            opacity: 0.2;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Misión */
+        .mission {
+            background: linear-gradient(to right, var(--cafe-oscuro), var(--texto-oscuro));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mission::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1478&q=80') no-repeat center center/cover;
+            opacity: 0.15;
+        }
+        
+        .mission h2, .mission h3 {
+            color: white;
+        }
+        
+        .mission-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+        
+        .mission-icon {
+            font-size: 4.5rem;
+            color: var(--dorado);
+            margin-bottom: 35px;
+        }
+        
+        .mission-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .mission-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .mission-stats {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 25px;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--dorado);
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 50px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-img {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 35px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.9rem;
+            margin-bottom: 20px;
+            color: var(--cafe-oscuro);
+        }
+        
+        .service-icon {
+            font-size: 2.8rem;
+            color: var(--dorado);
+            margin-bottom: 25px;
+        }
+        
+        .service-content p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+        
+        /* Sucursales */
+        .locations {
+            background-color: var(--beige);
+        }
+        
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+        }
+        
+        .location-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .location-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .location-img {
+            height: 250px;
+        }
+        
+        .location-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .location-info {
+            padding: 30px;
+        }
+        
+        .location-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--cafe-oscuro);
+        }
+        
+        .location-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            font-size: 1.1rem;
+        }
+        
+        .location-info i {
+            margin-right: 15px;
+            color: var(--dorado);
+            min-width: 20px;
+            margin-top: 4px;
+            font-size: 1.2rem;
+        }
+        
+        /* Tienda */
+        .store {
+            background-color: white;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .product-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            background: white;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+        }
+        
+        .product-img {
+            height: 280px;
+            background-color: var(--beige);
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .product-info h3 {
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+            color: var(--cafe-oscuro);
+        }
+        
+        .product-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--dorado);
+            color: var(--cafe-oscuro);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 1rem;
+            z-index: 2;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: var(--cafe-oscuro);
+            font-size: 1.5rem;
+            margin: 20px 0;
+            display: block;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .add-to-cart {
+            background: var(--cafe-oscuro);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-weight: 600;
+            width: 100%;
+            font-size: 1.1rem;
+        }
+        
+        .add-to-cart:hover {
+            background: var(--dorado);
+            color: var(--cafe-oscuro);
+        }
+        
+        /* Testimonios */
+        .testimonials {
+            background: linear-gradient(rgba(62, 39, 35, 0.9), rgba(62, 39, 35, 0.9)), url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .testimonials h2 {
+            color: white;
+        }
+        
+        .testimonials-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 40px;
+            margin: 20px 0;
+        }
+        
+        .testimonial-text {
+            font-size: 1.25rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .author-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--dorado);
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            color: white;
+            font-size: 1.4rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--cafe-oscuro);
+            color: white;
+            padding: 100px 0 40px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-column h3 {
+            color: var(--dorado);
+            margin-bottom: 30px;
+            font-size: 1.6rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--dorado);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: var(--cafe-claro);
+            margin-bottom: 18px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .footer-column a:hover {
+            color: var(--dorado);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 18px;
+            margin-top: 25px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--dorado);
+            color: var(--cafe-oscuro);
+            transform: translateY(-5px);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .newsletter-form input::placeholder {
+            color: var(--cafe-claro);
+        }
+        
+        .newsletter-form button {
+            background: var(--dorado);
+            color: var(--cafe-oscuro);
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .newsletter-form button:hover {
+            background: #e6c235;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.1rem;
+            color: var(--cafe-claro);
+        }
+        
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Efecto de desplazamiento para header */
+        .scrolled {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
+            padding: 10px 0 !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-mug-hot logo-icon"></i>
+                <div class="logo-text">Café Deluxe</div>
+            </div>
+            <nav>
+                <ul id="menu">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">¿Quiénes Somos?</a></li>
+                    <li><a href="#mision">Misión</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#sucursales">Sucursales</a></li>
+                    <li><a href="#tienda">Tienda</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Experiencia Cafetera de Excelencia</h1>
+            <p>Descubre el arte del café de especialidad en un ambiente refinado donde cada detalle ha sido cuidadosamente seleccionado para tu disfrute</p>
+            <div>
+                <a href="#tienda" class="btn">Explorar Menú</a>
+                <a href="#sucursales" class="btn btn-outline">Reservar Mesa</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>¿Quiénes Somos?</h2>
+                <p>La esencia de nuestra tradición cafetera desde 2008</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" alt="Interior de la cafetería">
+                </div>
+                <div class="about-text">
+                    <h3>Nuestra Historia</h3>
+                    <p>Fundada en 2008 por los hermanos Martínez, Café Deluxe nació como un pequeño establecimiento con una visión clara: elevar la experiencia del café a un nivel superior. Lo que comenzó como una modesta cafetería en el corazón de la ciudad se ha transformado en un referente de excelencia en el mundo cafetero.</p>
+                    
+                    <div class="highlight">
+                        <p>Creemos que el café es mucho más que una bebida; es un ritual, un arte y una experiencia sensorial que debe ser celebrada con dedicación y pasión.</p>
+                    </div>
+                    
+                    <p>En Café Deluxe, cada taza es el resultado de un minucioso proceso que comienza con la selección de los mejores granos de café de origen único, continúa con un tostado artesanal que realza sus cualidades únicas, y culmina con la maestría de nuestros baristas certificados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mision" class="mission">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestra Misión</h2>
+                <p>Compromiso con la excelencia y la sostenibilidad</p>
+            </div>
+            <div class="mission-content">
+                <i class="fas fa-seedling mission-icon"></i>
+                <h3>Transformar vidas a través del café</h3>
+                <p>En Café Deluxe, nuestra misión se fundamenta en tres pilares esenciales: ofrecer la mejor experiencia cafetera posible a nuestros clientes, apoyar a las comunidades cafetaleras mediante prácticas comerciales justas y sostenibles, y promover la cultura del café de especialidad como un arte que merece ser apreciado.</p>
+                <p>Nos comprometemos a reducir nuestro impacto ambiental mediante prácticas sostenibles en todas nuestras operaciones, desde el abastecimiento ético de granos hasta el uso de envases compostables y programas de reciclaje integrales.</p>
+                
+                <div class="mission-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">15</div>
+                        <div>Años de experiencia</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">300+</div>
+                        <div>Clientes felices diarios</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">12</div>
+                        <div>Orígenes de café</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div>Café de especialidad</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+                <p>Experiencias diseñadas para los amantes del café</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Café de especialidad">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-coffee"></i>
+                        </div>
+                        <h3>Café de Especialidad</h3>
+                        <p>Nuestros baristas certificados preparan cada taza con precisión, resaltando las notas únicas de cada origen. Desde métodos de extracción tradicionales hasta técnicas vanguardistas, cada bebida es una experiencia sensorial única.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1554119921-3c029a5d93a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Pastelería artesanal">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-cookie-bite"></i>
+                        </div>
+                        <h3>Pastelería Artesanal</h3>
+                        <p>Nuestros pasteleros crean delicias diariamente utilizando ingredientes frescos y de la más alta calidad. Cada postre es el complemento perfecto para realzar la experiencia de tu café favorito.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Eventos corporativos">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Eventos Exclusivos</h3>
+                        <p>Ofrecemos servicios de catering para eventos corporativos, reuniones privadas y celebraciones especiales. Diseñamos menús personalizados que reflejan la excelencia de nuestra propuesta gastronómica.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="sucursales" class="locations">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestras Sucursales</h2>
+                <p>Encuéntranos en las mejores ubicaciones de la ciudad</p>
+            </div>
+            <div class="locations-grid">
+                <div class="location-card">
+                    <div class="location-img">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sucursal Centro">
+                    </div>
+                    <div class="location-info">
+                        <h3>Sucursal Centro Histórico</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Plaza Principal #150, Centro Histórico</p>
+                        <p><i class="fas fa-clock"></i> Lunes a Viernes: 7:00 - 22:00</p>
+                        <p><i class="fas fa-clock"></i> Sábado y Domingo: 8:00 - 23:00</p>
+                        <p><i class="fas fa-phone"></i> (55) 1234-5678</p>
+                    </div>
+                </div>
+                
+                <div class="location-card">
+                    <div class="location-img">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Sucursal Norte">
+                    </div>
+                    <div class="location-info">
+                        <h3>Sucursal Zona Norte</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Av. de los Jardines #350, Zona Norte</p>
+                        <p><i class="fas fa-clock"></i> Lunes a Domingo: 7:30 - 22:30</p>
+                        <p><i class="fas fa-phone"></i> (55) 2345-6789</p>
+                    </div>
+                </div>
+                
+                <div class="location-card">
+                    <div class="location-img">
+                        <img src="https://images.unsplash.com/photo-1463797221720-6b07e6426c24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Sucursal Oeste">
+                    </div>
+                    <div class="location-info">
+                        <h3>Sucursal Distrito Oeste</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Blvd. del Valle #789, Distrito Oeste</p>
+                        <p><i class="fas fa-clock"></i> Lunes a Sábado: 8:00 - 21:00</p>
+                        <p><i class="fas fa-clock"></i> Domingo: 9:00 - 20:00</p>
+                        <p><i class="fas fa-phone"></i> (55) 3456-7890</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Section -->
+    <section id="tienda" class="store">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tienda en Línea</h2>
+                <p>Lleva la experiencia Café Deluxe a tu hogar</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-tag">Nuevo</div>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1522992319-0365e5f11656?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Café Etiopía">
+                    </div>
+                    <div class="product-info">
+                        <h3>Café Etiopía Sidamo</h3>
+                        <p>Origen único con notas florales, cítricas y de frutos rojos</p>
+                        <span class="price">$280 / 500g</span>
+                        <button class="add-to-cart">Añadir al Carrito</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Café Colombia">
+                    </div>
+                    <div class="product-info">
+                        <h3>Café Colombia Excelso</h3>
+                        <p>Balance perfecto con notas de caramelo, nuez y chocolate</p>
+                        <span class="price">$260 / 500g</span>
+                        <button class="add-to-cart">Añadir al Carrito</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-tag">Más vendido</div>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1515442261605-65987783cb6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Mezcla Especial">
+                    </div>
+                    <div class="product-info">
+                        <h3>Mezcla Especial Deluxe</h3>
+                        <p>Nuestra exclusiva mezcla premiada con cuerpo completo y notas ahumadas</p>
+                        <span class="price">$320 / 500g</span>
+                        <button class="add-to-cart">Añadir al Carrito</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1579003594816-2b8b1fddc2b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Set de Degustación">
+                    </div>
+                    <div class="product-info">
+                        <h3>Set de Degustación Premium</h3>
+                        <p>4 variedades diferentes para descubrir nuevos sabores y orígenes</p>
+                        <span class="price">$380 / set</span>
+                        <button class="add-to-cart">Añadir al Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lo Que Dicen Nuestros Clientes</h2>
+                <p>Experiencias memorables en Café Deluxe</p>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "Café Deluxe redefine lo que significa una experiencia cafetera. La atención al detalle, desde la selección de granos hasta la presentación, es simplemente excepcional. Sus baristas conocedores transforman cada taza en una obra de arte."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" alt="Cliente 1">
+                        </div>
+                        <div class="author-info">
+                            <h4>María González</h4>
+                            <p>Crítica gastronómica</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "Como coleccionista de cafés de especialidad, he visitado establecimientos en todo el mundo. Café Deluxe se destaca por su combinación perfecta de ambiente sofisticado, servicio impecable y, sobre todo, la calidad excepcional de sus productos. Su tienda en línea me permite disfrutar de su excelencia desde casa."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Cliente 2">
+                        </div>
+                        <div class="author-info">
+                            <h4>Carlos Mendoza</h4>
+                            <p>Coleccionista de café</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Café Deluxe</h3>
+                    <p>Desde 2008 sirviendo los mejores cafés de especialidad con pasión y dedicación. Ven y descubre por qué somos la cafetería preferida de los conocedores.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Explorar</h3>
+                    <a href="#inicio">Inicio</a>
+                    <a href="#nosotros">¿Quiénes Somos?</a>
+                    <a href="#mision">Misión</a>
+                    <a href="#servicios">Servicios</a>
+                    <a href="#sucursales">Sucursales</a>
+                    <a href="#tienda">Tienda en Línea</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Plaza Principal #150, Centro Histórico</p>
+                    <p><i class="fas fa-phone"></i> (55) 1234-5678</p>
+                    <p><i class="fas fa-envelope"></i> reservaciones@cafedeluxe.com</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Domingo: 7:00 - 22:00</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Boletín Exclusivo</h3>
+                    <p>Suscríbete para recibir nuestras promociones, eventos especiales y contenido exclusivo sobre el mundo del café.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico">
+                        <button><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Café Deluxe. Todos los derechos reservados. | Diseño exclusivo para computadoras</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cambio de header al hacer scroll
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Animación para botones "Añadir al carrito"
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const product = this.closest('.product-card');
+                const productName = product.querySelector('h3').textContent;
+                
+                // Crear notificación
+                const notification = document.createElement('div');
+                notification.textContent = `¡${productName} añadido al carrito!`;
+                notification.style.cssText = `
+                    position: fixed;
+                    bottom: 40px;
+                    right: 40px;
+                    background-color: var(--cafe-oscuro);
+                    color: white;
+                    padding: 20px 35px;
+                    border-radius: 10px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+                    z-index: 1000;
+                    animation: fadeInOut 3s ease forwards;
+                    font-weight: 500;
+                    font-size: 1.1rem;
+                `;
+                
+                document.body.appendChild(notification);
+                
+                // Quitar notificación después de la animación
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            });
+        });
+        
+        // Añadir keyframes para la animación de notificación
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInOut {
+                0% { opacity: 0; transform: translateY(40px); }
+                20% { opacity: 1; transform: translateY(0); }
+                80% { opacity: 1; transform: translateY(0); }
+                100% { opacity: 0; transform: translateY(40px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
